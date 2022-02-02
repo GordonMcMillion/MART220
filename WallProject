@@ -1,0 +1,50 @@
+var x1 = 230;
+var y1 = 275;
+var x2 = 258;
+var y2 = 220;
+var x3 = 286;
+var y3 = 275;
+var bg;
+var y = 0;
+
+function preload()
+{
+    bg = loadImage('Assets/StarBackground.jpg')
+}
+function setup() 
+{
+    createCanvas(500,600)
+}
+
+
+function draw() 
+{
+    
+    background(bg);
+    triangle(x1, y1, x2, y2, x3, y3);
+    
+    line(0 , y, width, y);
+    y++;
+    if (y> height)
+    {
+        y=0;
+    }
+
+
+
+
+
+
+    if(keyPressed)
+    {
+        if(key === LEFT_ARROW)
+        {
+            
+        }
+    
+
+    }
+
+    
+}
+
