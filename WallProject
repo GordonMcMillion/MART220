@@ -71,4 +71,22 @@ function draw()
     {
         timer = 0
     }
+
+    if (x >= 800)
+    {
+        speedX = random(1, 10);
+        speedX = -speedX;
+    }
+    else if (y >= 600 )
+    {
+        speedY = random(1, 10);
+        speedY = -speedY;
+    }
+    else if(y < 0)
+    {
+        speedY = random(1, 10)
+    }
+    x = x + speedX
+    y = y + speedY;
+
 }
