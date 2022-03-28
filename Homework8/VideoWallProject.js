@@ -25,6 +25,7 @@ const particles = [];
 
 
 
+
 function preload()
 {
     bg = loadImage('./Assets/StarBackground.jpg')
@@ -77,40 +78,46 @@ function draw()
     triangle(x1, y1, x2, y2, x3, y3);
     //Rotate ship
 
+     //Draw and move astroid
+     for(var k = 0; k < astroid.length; k++)
+     {
+     image(astroid[k],
+         astroidXs[k], astroidYs[k]);
+         astroidXs[k] += flySpeedXs[k]
+         //Keeping in bounds
+         if(astroidXs[k] <= 0 || astroidXs[k] >= displayWidth)
+ 
+         {
+             flySpeedXs[k] *= -1
+         }
+ 
+         astroidYs[k] += flySpeedYs[k] 
+         if(astroidYs[k] <= 0 || astroidYs[k] >= displayHeight)
+         {
+             flySpeedYs[k] *= -1
+         }
+ 
+     }
+
+    //Particle
     createParticles(50,50)
 
-    function keyIsPressed()
+}
+
+
+function keyIsPressed()
 {
-    if (keyIsPressed("a")) 
+    if (keyPressed("a")) 
     {
         x1, y1, x2, y2, x3, y3.rotation -= 4;
     }
-    if (keyIsPressed("d"))
+    if (keyPressed("d"))
     {
         x1, y1, x2, y2, x3, y3.rotation += 4;
     }
 }
 
-    //Draw and move astroid
-    for(var k = 0; k < astroid.length; k++)
-    {
-    image(astroid[k],
-        astroidXs[k], astroidYs[k]);
-        astroidXs[k] += flySpeedXs[k]
-        //Keeping in bounds
-        if(astroidXs[k] <= 0 || astroidXs[k] >= displayWidth)
-
-        {
-            flySpeedXs[k] *= -1
-        }
-
-        astroidYs[k] += flySpeedYs[k] 
-        if(astroidYs[k] <= 0 || astroidYs[k] >= displayHeight)
-        {
-            flySpeedYs[k] *= -1
-        }
-
-    }
+   
     
     //shoot 
 
@@ -158,7 +165,7 @@ function draw()
         }
       }
     }
-}
+
 
 function incrementIndex()
     {
